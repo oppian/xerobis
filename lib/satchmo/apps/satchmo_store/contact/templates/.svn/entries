@@ -1,0 +1,40 @@
+9
+
+dir
+1964
+svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/contact/templates
+svn://satchmoproject.com
+
+
+
+2009-01-11T06:08:19.908922Z
+1894
+bkroeze
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a38d40e9-c014-0410-b785-c606c0c8e7de
+
+comments
+dir
+
+admin
+dir
+
+registration
+dir
+
+contact
+dir
+

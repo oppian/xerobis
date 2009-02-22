@@ -1,0 +1,40 @@
+9
+
+dir
+1964
+svn://satchmoproject.com/satchmo/trunk/satchmo/apps/payment/modules/giftcertificate/templates
+svn://satchmoproject.com
+
+
+
+2009-01-15T01:05:44.015120Z
+1902
+bkroeze
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a38d40e9-c014-0410-b785-c606c0c8e7de
+
+product
+dir
+
+plugins
+dir
+
+checkout
+dir
+
+giftcertificate
+dir
+

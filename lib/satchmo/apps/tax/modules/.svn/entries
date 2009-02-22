@@ -1,0 +1,71 @@
+9
+
+dir
+1964
+svn://satchmoproject.com/satchmo/trunk/satchmo/apps/tax/modules
+svn://satchmoproject.com
+
+
+
+2009-01-15T01:05:44.015120Z
+1902
+bkroeze
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a38d40e9-c014-0410-b785-c606c0c8e7de
+
+percent
+dir
+
+__init__.py
+file
+
+
+
+
+2009-02-22T02:40:30.296875Z
+d41d8cd98f00b204e9800998ecf8427e
+2007-10-01T17:20:43.370454Z
+795
+bkroeze
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+area
+dir
+
+no
+dir
+

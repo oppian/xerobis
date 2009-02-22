@@ -1,0 +1,58 @@
+9
+
+dir
+1964
+svn://satchmoproject.com/satchmo/trunk/satchmo/apps
+svn://satchmoproject.com
+
+
+
+2009-02-20T00:59:19.073859Z
+1964
+bkroeze
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a38d40e9-c014-0410-b785-c606c0c8e7de
+
+livesettings
+dir
+
+product
+dir
+
+shipping
+dir
+
+keyedcache
+dir
+
+l10n
+dir
+
+satchmo_store
+dir
+
+tax
+dir
+
+payment
+dir
+
+satchmo_ext
+dir
+
+satchmo_utils
+dir
+

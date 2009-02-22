@@ -1,0 +1,10 @@
+K 6
+ignore
+V 4
+*pyc
+K 10
+svn:ignore
+V 6
+*.pyc
+
+END

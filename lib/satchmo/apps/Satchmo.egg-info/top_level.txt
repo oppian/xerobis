@@ -1,0 +1,11 @@
+livesettings
+product
+shipping
+l10n
+tax
+satchmo_ext
+static
+keyedcache
+satchmo_utils
+satchmo_store
+payment

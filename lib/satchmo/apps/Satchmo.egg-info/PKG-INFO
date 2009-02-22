@@ -1,0 +1,14 @@
+Metadata-Version: 1.0
+Name: Satchmo
+Version: 0.9-pre
+Summary: The webshop for perfectionists with deadlines.
+Home-page: http://www.satchmoproject.com
+Author: Chris Moffitt
+Author-email: chris@moffitts.net
+License: BSD
+Description: Satchmo is an ecommerce framework created using Django.
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Office/Business
