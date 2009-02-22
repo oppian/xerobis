@@ -1,3 +1,3 @@
 from django.conf.urls.defaults import *
-from satchmo.urls import urlpatterns
+from satchmo_store.urls import urlpatterns
 

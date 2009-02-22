@@ -36,8 +36,8 @@ import logging
 #### Satchmo unique variables ####
 
 #These are used when loading the test data
-SITE_DOMAIN = "example.com"
-SITE_NAME = "My Site"
+SITE_DOMAIN = "xerobis.com"
+SITE_NAME = "Xerobis"
 
 # These can override or add to the default URLs
 #from django.conf.urls.defaults import *
@@ -80,7 +80,7 @@ logging.info("Satchmo Started")
 
 # added as explained in http://gosatchmo.com/starting-a-new-store-real-world-project-layout
 DIRNAME = os.path.dirname(__file__)
-SATCHMO_DIRNAME = os.path.join(DIRNAME, 'lib/satchmo')
+SATCHMO_DIRNAME = os.path.join(DIRNAME, 'lib/satchmo/apps/satchmo_store/shop')
 TEMPLATE_DIRS = (
 	os.path.join(DIRNAME, "templates"),
 	os.path.join(SATCHMO_DIRNAME, "templates"),
