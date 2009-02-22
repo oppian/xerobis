@@ -18,7 +18,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqllite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 # The following variables should be configured in your local_settings.py file
 DATABASE_NAME = os.path.join(DIRNAME, 'sqlite.db')             # Or path to database file if using sqlite3.
 #DATABASE_USER = ''             # Not used with sqlite3.
@@ -160,7 +160,7 @@ INSTALLED_APPS = (
     #'django_extensions',
 	
 	# local
-	xerobis.site,
+	'xerobis.site',
     
 )
 
@@ -178,7 +178,7 @@ LOGIN_REDIRECT_URL = '/accounts/'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-GB'
 
 # Languages for your site.  The language name
 # should be the utf-8 encoded local name for the language.

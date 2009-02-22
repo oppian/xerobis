@@ -1,1 +1,5 @@
-.pyc
+*.pyc
+*~
+*.bak
+sqlite.db
+*.log
