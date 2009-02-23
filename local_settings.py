@@ -82,6 +82,6 @@ logging.info("Satchmo Started")
 DIRNAME = os.path.dirname(__file__)
 SATCHMO_DIRNAME = os.path.join(DIRNAME, 'lib/satchmo/apps/satchmo_store/shop')
 TEMPLATE_DIRS = (
-	os.path.join(DIRNAME, "templates"),
-	os.path.join(SATCHMO_DIRNAME, "templates"),
+	os.path.normcase(os.path.join(DIRNAME, "templates")),
+	os.path.normcase(os.path.join(SATCHMO_DIRNAME, "templates")),
 )

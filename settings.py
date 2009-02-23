@@ -3,7 +3,7 @@
 # and import it from your main settings file. (from local_settings import *)
 import os
 
-DIRNAME = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
+DIRNAME = os.path.normcase(os.path.abspath(os.path.dirname(__file__)))
 
 DJANGO_PROJECT = 'satchmo'
 DJANGO_SETTINGS_MODULE = 'satchmo_store.settings'
@@ -40,7 +40,7 @@ SITE_ID = 1
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 # Image files will be stored off of this path.
-MEDIA_ROOT = os.path.join(DIRNAME, 'static/')
+MEDIA_ROOT = os.path.normcase(os.path.join(DIRNAME, 'static/'))
 # URL that handles the media served from MEDIA_ROOT. Use a trailing slash.
 # Example: "http://media.lawrence.com/"
 MEDIA_URL = '/static/'

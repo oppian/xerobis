@@ -47,15 +47,14 @@ def _get_path_from_url(url, root=settings.MEDIA_ROOT, url_root=settings.MEDIA_UR
 
 #    if url.startswith('/'):
 #        return url
-
     if url.startswith(url_root):
         url = url[len(url_root):] # strip media root url
 
-    return os.path.normpath(os.path.join(root, url))
+    return os.path.normcase(os.path.normpath(os.path.join(root, url)))
 
 def _get_url_from_path(path, root=settings.MEDIA_ROOT, url_root=settings.MEDIA_URL):
     """ make url from filesystem path """
-
+    path = os.path.normcase(path)
     if path.startswith(root):
         path = path[len(root):] # strip media root
 
@@ -252,9 +251,9 @@ def rename_by_field(file_path, req_name, add_path=None):
     if file_path.strip() == '': return '' # no file uploaded
 
     old_name = os.path.basename(file_path)
-    path = os.path.dirname(file_path)
-
-    media_root = os.path.normpath(settings.MEDIA_ROOT)
+    path = os.path.normcase(os.path.dirname(file_path)).replace("\\", "/")
+    media_root = os.path.normcase(os.path.normpath(settings.MEDIA_ROOT)).replace("\\", "/")
+    
     if path.startswith(media_root):
         path = path[len(media_root):]
     if path[0] == '/':
