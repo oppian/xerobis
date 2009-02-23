@@ -91,7 +91,7 @@ ROOT_URLCONF = 'xerobis.site.urls'
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates".
     # Always use forward slashes, even on Windows.
-    os.path.join(DIRNAME, "templates"),
+#    os.path.join(DIRNAME, "templates"),
 )
 
 INSTALLED_APPS = (
@@ -100,11 +100,11 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.comments',
+#    'django.contrib.comments',
     'django.contrib.sessions',
     'django.contrib.sitemaps',
     'django.contrib.sites',
-    #'registration',
+#    'registration',
     'sorl.thumbnail',
     'satchmo',
     'keyedcache',
@@ -122,13 +122,16 @@ INSTALLED_APPS = (
     'payment.modules.giftcertificate',
     'satchmo_store.contact.supplier',
     'satchmo_utils',
-    'satchmo_utils.thumbnail',
+#    'satchmo_utils.thumbnail',
     'l10n',
     'tax',
+	'tax.modules.no',
+	'tax.modules.area',
+	'tax.modules.percent',
 #    'satchmo_ext.recentlist',
     'satchmo_ext.wishlist',
-    'satchmo_ext.upsell',
-    'satchmo_ext.productratings',
+#    'satchmo_ext.upsell',
+#    'satchmo_ext.productratings',
     'app_plugins',
     # ****
     # * Optional Feature, Tiered shipping
