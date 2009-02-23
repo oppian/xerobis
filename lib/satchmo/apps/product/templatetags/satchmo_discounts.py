@@ -55,13 +55,9 @@ register.filter('discount_cart_total', discount_cart_total)
 
 def untaxed_discount_cart_total(cart, discount):
     """Returns the discounted total for this cart"""
-    if discount:
-        total = Decimal('0.00')
-    
-        for item in cart:
-            total += untaxed_discount_line_total(item, discount)
-    else:
-        total = cart.total
+    total = Decimal('0.00')    
+    for item in cart:
+        total += untaxed_discount_line_total(item, discount)
         
     return total
         
@@ -69,13 +65,9 @@ register.filter('untaxed_discount_cart_total', discount_cart_total)
 
 def taxed_discount_cart_total(cart, discount):
     """Returns the discounted total for this cart with taxes included"""
-    if discount:
-        total = Decimal('0.00')
-    
-        for item in cart:
-            total += taxed_discount_line_total(item, discount)
-    else:
-        total = discount_cart_total(cart, discount)
+    total = Decimal('0.00')
+    for item in cart:
+        total += taxed_discount_line_total(item, discount)
         
     return total
         
@@ -103,7 +95,7 @@ register.filter('untaxed_discount_line_total', discount_line_total)
 
 def taxed_discount_line_total(cartitem, discount):
     """Returns the discounted line total for this cart item with taxes included."""
-    price = discount_line_total(cartitem, discount)
+    price = untaxed_discount_line_total(cartitem, discount)
     taxer = satchmo_tax._get_taxprocessor()
     price = price + taxer.by_price(cartitem.product.taxClass, price)
     
@@ -143,9 +135,11 @@ def taxed_discount_price(product, discount):
     
     Ex: product|discount_price:sale
     """
-    price = discount_price(product, discount)
+    price = untaxed_discount_price(product, discount)
     taxer = satchmo_tax._get_taxprocessor()
     price = price + taxer.by_price(product.taxClass, price)
+    
+    return price
 
 register.filter('taxed_discount_price', discount_price)
 
@@ -174,8 +168,8 @@ def untaxed_discount_saved(product, discount):
     
     if discount and discount.valid_for_product(product):
         price = product.unit_price
-        discounted = calc_discounted_by_percentage(price, discount.percentage)
-        saved = price-discounted
+        discounted = untaxed_discount_price(price, discount)
+        saved = price - discounted
         cents = Decimal("0.01")
         return saved.quantize(cents)
     else:
@@ -189,7 +183,7 @@ def taxed_discount_saved(product, discount):
     if discount and discount.valid_for_product(product):
         price = product.unit_price
         discounted = taxed_discount_price(product, discount)
-        saved = price-discounted
+        saved = price - discounted
         cents = Decimal("0.01")
         return saved.quantize(cents)
     else:
