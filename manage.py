@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 from django.core.management import execute_manager
+
+# force loading of relative django dir for running on command line, modpython set seperatly
+import os.path
+import sys
+dirname = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, '%s/../lib' % dirname)
+sys.path.insert(0, '%s/../lib/satchmo-apps' % dirname)
+
 try:
     import settings # Assumed to be in the same directory.
 except ImportError:
