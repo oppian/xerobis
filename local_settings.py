@@ -36,7 +36,7 @@ import logging
 #### Satchmo unique variables ####
 
 #These are used when loading the test data
-SITE_DOMAIN = "xerobis.com"
+SITE_DOMAIN = "xerobis.co.uk"
 SITE_NAME = "Xerobis"
 
 # These can override or add to the default URLs
@@ -48,8 +48,8 @@ SITE_NAME = "Xerobis"
 # Preferably use memcached, but file or DB is OK.  File is faster, I don't know why you'd want to use
 # db, personally.  See: http://www.djangoproject.com/documentation/cache/ for help setting up your
 # cache backend
-#CACHE_BACKEND = "memcached://127.0.0.1:11211/"
-CACHE_BACKEND = "file://C:/tmp/django_cache"
+CACHE_BACKEND = "memcached://127.0.0.1:11211/"
+#CACHE_BACKEND = "file://C:/tmp/django_cache"
 CACHE_TIMEOUT = 60*5
 
 ACCOUNT_ACTIVATION_DAYS = 7
