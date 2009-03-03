@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     #'satchmo_ext.brand'
     'shipping',
     'payment',
-    'payment.modules.giftcertificate',
+    #'payment.modules.giftcertificate',
     'satchmo_store.contact.supplier',
     'satchmo_utils',
     'satchmo_utils.thumbnail',
