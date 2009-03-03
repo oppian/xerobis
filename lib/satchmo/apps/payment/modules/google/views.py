@@ -15,6 +15,7 @@ import base64
 import hmac
 import logging
 import sha
+from payment.views import confirm
 
 # TODO: This module doesn't seem to actually record any payments.
 
@@ -63,30 +64,13 @@ pay_ship_info = never_cache(pay_ship_info)
 def confirm_info(request):
     payment_module = config_get_group('PAYMENT_GOOGLE')
 
-    if not 'orderID' in request.session:
-        url = lookup_url(payment_module, 'satchmo_checkout-step1')
-        return http.HttpResponseRedirect(url)
-
-    tempCart = Cart.objects.from_request(request)
-    if tempCart.numItems == 0:
-        template = lookup_template(payment_module, 'shop/checkout/empty_cart.html')
-        return render_to_response(template, RequestContext(request))
-            
-    try:
-        order = Order.objects.from_request(request)
-
-    except Order.DoesNotExist:
-        order = None
-
-    if not (order and order.validate(request)):
-        context = RequestContext(request,
-            {'message': _('Your order is no longer valid.')})
-        return render_to_response('shop/404.html', context)    
-
+    controller = confirm.ConfirmController(request, payment_module)
+    if not controller.sanity_check():
+        return controller.response
+    
     live = payment_live(payment_module)
-    gcart = GoogleCart(order, payment_module, live)
+    gcart = GoogleCart(controller.order, payment_module, live)
     log.debug("CART:\n%s", gcart.cart_xml)
-    template = lookup_template(payment_module, 'shop/checkout/confirm.html')
 
     if live:
         merchant_id = payment_module.MERCHANT_ID.value
@@ -98,14 +82,15 @@ def confirm_info(request):
     post_url =  url_template % {'MERCHANT_ID' : merchant_id}
     default_view_tax = config_value('TAX', 'DEFAULT_VIEW_TAX')
     
-    ctx = RequestContext(request, {
-        'order': order,
+    ctx = {
         'post_url': post_url,
-        'default_view_tax': default_view_tax,
         'google_cart' : gcart.encoded_cart(),
         'google_signature' : gcart.encoded_signature(),
         'PAYMENT_LIVE' : live
-    })
+    }
+    
+    controller.extra_context = ctx
+    controller.confirm()
+    return controller.response
 
-    return render_to_response(template, ctx)
 confirm_info = never_cache(confirm_info)
