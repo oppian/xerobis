@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/shop/templates/shop/admin
 svn://satchmoproject.com
 
 
 
-2009-01-15T01:05:44.015120Z
-1902
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 
 
@@ -134,10 +134,10 @@ file
 
 
 
-2009-02-22T02:40:09.625000Z
-563c1a1d270dd13b38d94e0ffdd1ed5f
-2008-12-05T05:59:13.583144Z
-1782
+2009-03-02T23:56:55.111375Z
+b12092c40feb507393b8b57c095d12b4
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -160,5 +160,5 @@ has-props
 
 
 
-576
+572
 

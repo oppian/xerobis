@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_ext/upsell
 svn://satchmoproject.com
 
 
 
-2009-01-15T01:05:44.015120Z
-1902
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -69,10 +69,10 @@ file
 
 
 
-2009-02-22T02:40:52.468750Z
-51f814ed622e7a7583451012a163bd39
-2009-01-15T01:05:44.015120Z
-1902
+2009-03-02T23:56:58.173875Z
+b75e1e6f931f011c8f6e080c78291df0
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 
 
@@ -95,7 +95,7 @@ bkroeze
 
 
 
-2770
+2781
 
 __init__.py
 file

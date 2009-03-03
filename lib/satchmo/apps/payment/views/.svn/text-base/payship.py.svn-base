@@ -8,9 +8,11 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from livesettings import config_value
 from satchmo_store.contact.models import Contact
 from payment.config import payment_live
 from payment.forms import CreditPayShipForm, SimplePayShipForm
+from payment.utils import get_or_create_order
 from product.utils import find_best_auto_discount
 from satchmo_store.shop.models import Cart
 from satchmo_store.shop.models import Order, OrderPayment
@@ -84,17 +86,29 @@ def simple_pay_ship_process_form(request, contact, working_cart, payment_module)
         form = SimplePayShipForm(request, payment_module, new_data)
         if form.is_valid():
             form.save(request, working_cart, contact, payment_module)
-            url = lookup_url(payment_module, 'satchmo_checkout-step3')
-            return (True, http.HttpResponseRedirect(url))
     else:
         form = SimplePayShipForm(request, payment_module)
+        if config_value('PAYMENT','USE_DISCOUNTS') or not form.shipping_hidden:
+            return (False, form)
+        else:
+            # No discounts, no shipping choice = skip this step
+            order = get_or_create_order(
+                    request,
+                    working_cart,
+                    contact,
+                    {'shipping': form.fields['shipping'].initial, 'discount': ''}
+                    )
+            processor_module = payment_module.MODULE.load_module('processor')
+            processor = processor_module.PaymentProcessor(payment_module)
+            orderpayment = processor.create_pending_payment(order=order)
+    url = lookup_url(payment_module, 'satchmo_checkout-step3')
+    return (True, http.HttpResponseRedirect(url))
 
-    return (False, form)
 
 def pay_ship_render_form(request, form, template, payment_module, cart):
     template = lookup_template(payment_module, template)
     
-    if cart.numItems > 0:    
+    if cart.numItems > 0:
         products = [item.product for item in cart.cartitem_set.all()]
         sale = find_best_auto_discount(products)
     else:
@@ -103,7 +117,9 @@ def pay_ship_render_form(request, form, template, payment_module, cart):
     ctx = RequestContext(request, {
         'form': form,
         'sale' : sale,
-        'PAYMENT_LIVE': payment_live(payment_module)})
+        'PAYMENT_LIVE': payment_live(payment_module),
+        'USE_DISCOUNTS': config_value('PAYMENT','USE_DISCOUNTS'),
+        })
     return render_to_response(template, ctx)
 
 def base_pay_ship_info(request, payment_module, form_handler, template):

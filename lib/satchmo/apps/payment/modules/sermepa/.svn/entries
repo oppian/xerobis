@@ -1,16 +1,16 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/payment/modules/sermepa
 svn://satchmoproject.com
 
 
 
-2009-02-10T12:00:01.655646Z
-1945
-emes
-
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
+has-props
 
 svn:special svn:externals svn:needs-lock
 
@@ -32,11 +32,11 @@ file
 
 
 
-2009-02-22T02:40:43.171875Z
-f235fb27652f662c8301e99d1e30a181
-2009-02-10T12:00:01.655646Z
-1945
-emes
+2009-03-02T23:56:57.892625Z
+803f324ae16700a45bf158b9290bb657
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
 
 
 
@@ -58,7 +58,7 @@ emes
 
 
 
-8096
+8165
 
 __init__.py
 file
@@ -94,17 +94,51 @@ emes
 
 0
 
+processor.py
+file
+
+
+
+
+2009-03-02T23:56:57.892625Z
+75173aac062821b95125ae4b9146dafa
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+212
+
 config.py
 file
 
 
 
 
-2009-02-22T02:40:43.171875Z
-7b1ae3edf223ffbaa458441ec5cce3bd
-2009-02-10T12:00:01.655646Z
-1945
-emes
+2009-03-02T23:56:57.908250Z
+43b37a00ddd03025e464be2bcce8d745
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
 
 
 
@@ -126,7 +160,7 @@ emes
 
 
 
-5123
+5307
 
 urls.py
 file

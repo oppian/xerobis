@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/contact/templates/registration
 svn://satchmoproject.com
 
 
 
-2009-01-11T06:08:19.908922Z
-1894
+2009-03-01T20:20:01.007332Z
+1977
 bkroeze
 
 
@@ -202,10 +202,10 @@ file
 
 
 
-2009-02-22T02:40:25.312500Z
-13f7111319800d2a413ae37402e5979f
-2008-12-05T07:35:39.004671Z
-1786
+2009-03-02T23:56:55.486375Z
+07fd73dda1b40da8c58ebac054867c89
+2009-03-01T20:20:01.007332Z
+1977
 bkroeze
 has-props
 
@@ -228,7 +228,7 @@ has-props
 
 
 
-1784
+1805
 
 activate.html
 file
@@ -298,40 +298,6 @@ has-props
 
 374
 
-registration_complete.html
-file
-
-
-
-
-2009-02-22T02:40:25.375000Z
-e7dce48f43c4a6be80365eac65c27b80
-2008-12-05T07:35:39.004671Z
-1786
-bkroeze
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-793
-
 activation_email_subject.txt
 file
 
@@ -365,6 +331,40 @@ has-props
 
 
 27
+
+registration_complete.html
+file
+
+
+
+
+2009-02-22T02:40:25.375000Z
+e7dce48f43c4a6be80365eac65c27b80
+2008-12-05T07:35:39.004671Z
+1786
+bkroeze
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+793
 
 welcome.txt
 file
@@ -468,40 +468,6 @@ has-props
 
 1368
 
-password_reset_done.html
-file
-
-
-
-
-2009-02-22T02:40:25.437500Z
-ca7448e2d91398dec4fabad905f33661
-2008-12-05T07:35:39.004671Z
-1786
-bkroeze
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-379
-
 logout.html
 file
 
@@ -535,4 +501,38 @@ has-props
 
 
 262
+
+password_reset_done.html
+file
+
+
+
+
+2009-02-22T02:40:25.437500Z
+ca7448e2d91398dec4fabad905f33661
+2008-12-05T07:35:39.004671Z
+1786
+bkroeze
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+379
 

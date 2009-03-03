@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/product
 svn://satchmoproject.com
 
 
 
-2009-02-13T19:31:03.088883Z
-1953
+2009-02-23T07:24:24.075442Z
+1969
 bkroeze
 has-props
 
@@ -97,40 +97,6 @@ has-props
 
 0
 
-utils.py
-file
-
-
-
-
-2009-02-22T02:39:48.093750Z
-d2baf39c09627a621b56ed82c27d9d75
-2009-02-13T07:59:29.649805Z
-1952
-bkroeze
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7845
-
 signals.py
 file
 
@@ -164,6 +130,40 @@ bkroeze
 
 
 461
+
+utils.py
+file
+
+
+
+
+2009-02-22T02:39:48.093750Z
+d2baf39c09627a621b56ed82c27d9d75
+2009-02-13T07:59:29.649805Z
+1952
+bkroeze
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7845
 
 tests.py
 file
@@ -236,6 +236,12 @@ has-props
 
 3598
 
+jobs
+dir
+
+views
+dir
+
 fields.py
 file
 
@@ -270,16 +276,7 @@ bkroeze
 
 0
 
-views
-dir
-
-jobs
-dir
-
 templates
-dir
-
-locale
 dir
 
 listeners.py
@@ -315,6 +312,9 @@ bkroeze
 
 
 3455
+
+locale
+dir
 
 queries.py
 file

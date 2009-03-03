@@ -1,7 +1,7 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_ext/newsletter
 svn://satchmoproject.com
 
@@ -267,6 +267,9 @@ chris
 templates
 dir
 
+locale
+dir
+
 listeners.py
 file
 
@@ -300,9 +303,6 @@ bkroeze
 
 
 453
-
-locale
-dir
 
 mailman.py
 file
@@ -372,40 +372,6 @@ has-props
 
 81
 
-ignore.py
-file
-
-
-
-
-2009-02-22T02:41:21.968750Z
-4917dcc4406973fb685772107be3121b
-2008-09-23T22:44:40.265279Z
-1552
-bkroeze
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-146
-
 models.py
 file
 
@@ -439,6 +405,40 @@ has-props
 
 
 4012
+
+ignore.py
+file
+
+
+
+
+2009-02-22T02:41:21.968750Z
+4917dcc4406973fb685772107be3121b
+2008-09-23T22:44:40.265279Z
+1552
+bkroeze
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+146
 
 urls.py
 file

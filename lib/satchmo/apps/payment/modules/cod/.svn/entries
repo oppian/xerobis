@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/payment/modules/cod
 svn://satchmoproject.com
 
 
 
-2009-01-02T05:58:33.234463Z
-1863
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -100,10 +100,10 @@ file
 
 
 
-2009-02-22T02:40:36.312500Z
-6844c36c688012a33c24488a051394cf
-2008-11-27T18:33:01.244033Z
-1754
+2009-03-02T23:56:56.627000Z
+d9936446aeec1b98e34dc9b3863c2bf4
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -126,7 +126,7 @@ has-props
 
 
 
-616
+819
 
 config.py
 file
@@ -134,10 +134,10 @@ file
 
 
 
-2009-02-22T02:40:36.328125Z
-8c4894f633233203909b07bccec0eedf
-2008-11-27T18:33:01.244033Z
-1754
+2009-03-02T23:56:56.642625Z
+cdfd0434b1cf5c8000d2b496aa48e9c4
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -160,7 +160,7 @@ has-props
 
 
 
-1547
+1737
 
 urls.py
 file

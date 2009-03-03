@@ -10,6 +10,7 @@
 
 import os
 import logging
+import settings
 
 # This is useful, since satchmo is not the "current directory" like load_data expects.
 # SATCHMO_DIRNAME = ''
@@ -48,8 +49,11 @@ SITE_NAME = "Xerobis"
 # Preferably use memcached, but file or DB is OK.  File is faster, I don't know why you'd want to use
 # db, personally.  See: http://www.djangoproject.com/documentation/cache/ for help setting up your
 # cache backend
-CACHE_BACKEND = "memcached://127.0.0.1:11211/"
-#CACHE_BACKEND = "file://C:/tmp/django_cache"
+if settings.DEBUG:
+	CACHE_BACKEND = "file://C:/tmp/django_cache"
+else:
+	CACHE_BACKEND = "memcached://127.0.0.1:11211/"
+	
 CACHE_TIMEOUT = 60*5
 
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -76,6 +80,7 @@ fileLog.setFormatter(formatter)
 # add the handler to the root logger
 logging.getLogger('').addHandler(fileLog)
 logging.getLogger('keyedcache').setLevel(logging.INFO)
+logging.getLogger('l10n').setLevel(logging.INFO)
 logging.info("Satchmo Started")
 
 # added as explained in http://gosatchmo.com/starting-a-new-store-real-world-project-layout

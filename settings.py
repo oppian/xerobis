@@ -122,7 +122,7 @@ INSTALLED_APPS = (
     'payment.modules.giftcertificate',
     'satchmo_store.contact.supplier',
     'satchmo_utils',
-#    'satchmo_utils.thumbnail',
+    'satchmo_utils.thumbnail',
     'l10n',
     'tax',
 	'tax.modules.no',

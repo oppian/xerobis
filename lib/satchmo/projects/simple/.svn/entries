@@ -1,15 +1,15 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/projects/simple
 svn://satchmoproject.com
 
 
 
-2009-02-12T03:09:44.233259Z
-1950
-chris
+2009-03-02T16:33:47.594452Z
+1980
+bkroeze
 has-props
 
 svn:special svn:externals svn:needs-lock
@@ -69,11 +69,11 @@ file
 
 
 
-2009-02-22T02:41:36.078125Z
-feb8bd2159e3fd47ccb2ac10109fd3b4
-2009-02-12T03:09:44.233259Z
-1950
-chris
+2009-03-02T23:56:58.408250Z
+5b94a0018256fcb0fbd54001ed76bcc0
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
 
 
 
@@ -95,7 +95,7 @@ chris
 
 
 
-2319
+2368
 
 __init__.py
 file
@@ -137,11 +137,11 @@ file
 
 
 
-2009-02-22T02:41:36.093750Z
-acc4867436725f8d7640160cf5a1a869
-2009-02-10T18:24:03.217079Z
-1947
-emes
+2009-03-02T23:56:58.423875Z
+f19638d9ab07561ef572ef781cda8f75
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
 
 
 
@@ -163,7 +163,7 @@ emes
 
 
 
-4968
+4976
 
 urls.py
 file
@@ -239,11 +239,11 @@ file
 
 
 
-2009-02-22T02:41:36.109375Z
-f7306f62c71c37f07a2932b5e54d85f7
-2009-02-10T18:24:03.217079Z
-1947
-emes
+2009-03-02T23:56:58.439500Z
+cb45c6a940172dced17b5a7c827337e9
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
 has-props
 
 
@@ -265,7 +265,7 @@ has-props
 
 
 
-488448
+498688
 
 templates
 dir

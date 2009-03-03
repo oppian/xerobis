@@ -1,15 +1,15 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/shop/views
 svn://satchmoproject.com
 
 
 
-2009-02-19T01:34:07.052543Z
-1962
-chris
+2009-02-25T22:40:25.181086Z
+1973
+bkroeze
 has-props
 
 svn:special svn:externals svn:needs-lock
@@ -100,10 +100,10 @@ file
 
 
 
-2009-02-22T02:40:08.734375Z
-83127825e4be2f0e40dbc412d9f68a51
-2009-02-05T20:10:45.921642Z
-1938
+2009-03-02T23:56:55.033250Z
+28df72b1c33d6ebfec3441ed1d6f09a1
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -126,7 +126,7 @@ has-props
 
 
 
-16375
+16411
 
 contact.py
 file

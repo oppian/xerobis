@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/contact
 svn://satchmoproject.com
 
 
 
-2009-02-16T18:03:20.931750Z
-1958
+2009-03-02T17:57:36.686793Z
+1982
 emes
 has-props
 
@@ -279,11 +279,11 @@ file
 
 
 
-2009-02-22T02:40:25.875000Z
-4b24bc01362dea8b27fbcb05e7772a73
-2008-12-06T02:03:43.597857Z
-1798
-bkroeze
+2009-03-02T23:56:55.595750Z
+5798538d24a3f1533502a216d08a38e7
+2009-03-02T16:43:08.477989Z
+1981
+emes
 
 
 
@@ -305,7 +305,7 @@ bkroeze
 
 
 
-1719
+2265
 
 urls.py
 file
@@ -347,10 +347,10 @@ file
 
 
 
-2009-02-22T02:40:25.890625Z
-ffc950bfba87d50ca8d140e315a951e8
-2009-02-16T18:03:20.931750Z
-1958
+2009-03-02T23:56:55.611375Z
+1a3bf4fd817d728b1c956db0d268e57c
+2009-03-02T17:57:36.686793Z
+1982
 emes
 
 
@@ -373,7 +373,7 @@ emes
 
 
 
-16207
+16406
 
 templates
 dir

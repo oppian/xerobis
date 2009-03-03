@@ -1,15 +1,15 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/accounts
 svn://satchmoproject.com
 
 
 
-2009-02-05T18:42:44.332048Z
-1937
-emes
+2009-03-01T20:20:01.007332Z
+1977
+bkroeze
 has-props
 
 svn:special svn:externals svn:needs-lock
@@ -35,10 +35,10 @@ file
 
 
 
-2009-02-22T02:40:07.828125Z
-1b3a16ba7afa99eaa28f26b24d20e19e
-2009-01-11T06:08:19.908922Z
-1894
+2009-03-02T23:56:54.845750Z
+53c7163d29387d4a344cc95e22033fc1
+2009-03-01T20:20:01.007332Z
+1977
 bkroeze
 has-props
 
@@ -61,7 +61,7 @@ has-props
 
 
 
-11779
+12020
 
 __init__.py
 file
@@ -205,11 +205,11 @@ file
 
 
 
-2009-02-22T02:40:07.875000Z
-cbe7163fc3157cbeb152db84bf060d26
-2008-11-15T18:07:28.882924Z
-1702
-bkroeze
+2009-03-02T23:56:54.861375Z
+c43ad157cfa4c79d3bb55a0aee7ab973
+2009-02-24T11:15:37.555156Z
+1970
+emes
 has-props
 
 
@@ -231,7 +231,7 @@ has-props
 
 
 
-1085
+1093
 
 forms.py
 file
@@ -239,11 +239,11 @@ file
 
 
 
-2009-02-22T02:40:07.875000Z
-5913bc4d826941406958c67e1257a064
-2009-02-05T18:42:44.332048Z
-1937
-emes
+2009-03-02T23:56:54.877000Z
+dc9868501cc1e6cb1c3280bfd4a286bf
+2009-03-01T20:20:01.007332Z
+1977
+bkroeze
 
 
 
@@ -265,5 +265,5 @@ emes
 
 
 
-5394
+5481
 

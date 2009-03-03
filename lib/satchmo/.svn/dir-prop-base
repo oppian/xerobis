@@ -1,8 +1,13 @@
 K 10
 svn:ignore
-V 36
-*.pyc
-local_settings.py
-settings.py
+V 89
+*pyc
+*_local.py
+*~
+productimage-picture*_*.jpg
+partner*logo*_*.jpg
+ORD*csv
+.hg
+.hgignore
 
 END

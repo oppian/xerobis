@@ -1,7 +1,7 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_utils
 svn://satchmoproject.com
 
@@ -60,6 +60,9 @@ emes
 
 7390
 
+thumbnail
+dir
+
 cookies.py
 file
 
@@ -93,9 +96,6 @@ bkroeze
 
 
 3056
-
-thumbnail
-dir
 
 views.py
 file
@@ -199,40 +199,6 @@ bkroeze
 
 241
 
-tests.py
-file
-
-
-
-
-2009-02-22T02:41:34.125000Z
-e04e3f5aecc6c72acbddae9f5b5350fb
-2009-01-15T01:05:44.015120Z
-1902
-bkroeze
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1788
-
 urlhelper.py
 file
 
@@ -267,7 +233,44 @@ bkroeze
 
 2419
 
+tests.py
+file
+
+
+
+
+2009-02-22T02:41:34.125000Z
+e04e3f5aecc6c72acbddae9f5b5350fb
+2009-01-15T01:05:44.015120Z
+1902
+bkroeze
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1788
+
 templatetags
+dir
+
+locale
 dir
 
 validators.py
@@ -303,9 +306,6 @@ has-props
 
 
 1015
-
-locale
-dir
 
 json.py
 file

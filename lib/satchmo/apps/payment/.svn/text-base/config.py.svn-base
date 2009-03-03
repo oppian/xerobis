@@ -81,7 +81,19 @@ config_register_list(
         'MINIMUM_ORDER',
         description=_("Minimum Order"),
         help_text=_("""The minimum cart total before checkout is allowed."""),
-        default="0.00")
+        default="0.00"),
+
+    BooleanValue(PAYMENT_GROUP,
+        'STORE_CREDIT_NUMBERS',
+        description=_("Save Credit Card Numbers"),
+        help_text=_("If False, then the credit card will never be written to disk.  For PCI compliance, this is required unless you have your database server on a separate server not connected to the internet."),
+        default=False),
+
+    BooleanValue(PAYMENT_GROUP,
+        'USE_DISCOUNTS',
+        description=_("Use discounts"),
+        help_text=_("""If disabled, customers will not be asked for any discount codes."""),
+        default=True)
 )
 
 # --- Load default payment modules.  Ignore import errors, user may have deleted them. ---
@@ -103,6 +115,12 @@ for extra in extra_payment:
         log.warn('Could not load payment module configuration: %s' % extra)
 
 # --- helper functions ---
+
+def active_modules():
+    """Get a list of activated payment modules, in the form of
+    [(key), (config group),...]
+    """
+    return [(module, config_get_group(module)) for module in config_value('PAYMENT', 'MODULES')]
 
 def credit_choices(settings=None, include_module_if_no_choices=False):
     choices = []

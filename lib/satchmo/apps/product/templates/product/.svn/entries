@@ -1,7 +1,7 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/product/templates/product
 svn://satchmoproject.com
 
@@ -60,40 +60,6 @@ has-props
 
 1996
 
-cart_detail_subscriptionproduct.html
-file
-
-
-
-
-2009-02-22T02:39:42.843750Z
-9d295a55c527e2952084239087e0740b
-2008-11-17T05:58:31.887629Z
-1704
-bkroeze
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-883
-
 product.html
 file
 
@@ -127,6 +93,40 @@ has-props
 
 
 2532
+
+cart_detail_subscriptionproduct.html
+file
+
+
+
+
+2009-02-22T02:39:42.843750Z
+9d295a55c527e2952084239087e0740b
+2008-11-17T05:58:31.887629Z
+1704
+bkroeze
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+883
 
 detail_configurableproduct.html
 file
@@ -162,40 +162,6 @@ has-props
 
 2989
 
-best_ratings.html
-file
-
-
-
-
-2009-02-22T02:39:42.859375Z
-761371a5824a9c8d0cc7c86d3e48dd8b
-2009-01-07T05:58:47.737741Z
-1869
-jshaffer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-987
-
 product_discount_eligible.html
 file
 
@@ -229,6 +195,40 @@ has-props
 
 
 460
+
+best_ratings.html
+file
+
+
+
+
+2009-02-22T02:39:42.859375Z
+761371a5824a9c8d0cc7c86d3e48dd8b
+2009-01-07T05:58:47.737741Z
+1869
+jshaffer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+987
 
 admin
 dir
@@ -369,17 +369,17 @@ jshaffer
 
 826
 
-cart_detail_customproduct.html
+recently_added.html
 file
 
 
 
 
-2009-02-22T02:39:42.921875Z
-26479fc06b4f84133527fccd4e2c7ce7
-2008-11-17T05:58:31.887629Z
-1704
-bkroeze
+2009-02-22T02:39:42.906250Z
+d69201f6fb6939e97eafda62ef7a04f2
+2009-01-07T05:58:47.737741Z
+1869
+jshaffer
 
 
 
@@ -401,7 +401,7 @@ bkroeze
 
 
 
-747
+1463
 
 minimum_order.html
 file
@@ -437,17 +437,17 @@ bkroeze
 
 532
 
-recently_added.html
+cart_detail_customproduct.html
 file
 
 
 
 
-2009-02-22T02:39:42.906250Z
-d69201f6fb6939e97eafda62ef7a04f2
-2009-01-07T05:58:47.737741Z
-1869
-jshaffer
+2009-02-22T02:39:42.921875Z
+26479fc06b4f84133527fccd4e2c7ce7
+2008-11-17T05:58:31.887629Z
+1704
+bkroeze
 
 
 
@@ -469,7 +469,7 @@ jshaffer
 
 
 
-1463
+747
 
 some_discount_eligible.html
 file

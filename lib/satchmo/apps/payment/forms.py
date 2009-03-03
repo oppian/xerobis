@@ -3,14 +3,14 @@ from django.conf import settings
 from django.template import loader
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
-from livesettings import config_value, config_choice_values
+from livesettings import config_value, config_value_safe, config_choice_values, config_get_group
 from satchmo_store.contact.forms import ProxyContactForm, ContactInfoForm
 from satchmo_store.contact.models import Contact
 from l10n.utils import moneyfmt
 from payment import signals
 from payment.config import labelled_payment_choices
 from payment.models import CreditCardDetail
-from payment.utils import create_pending_payment, get_or_create_order, pay_ship_save
+from payment.utils import get_or_create_order, pay_ship_save
 from product.models import Discount
 from product.utils import find_best_auto_discount
 from shipping.config import shipping_methods, shipping_method_by_key
@@ -47,7 +47,7 @@ def _get_shipping_choices(request, paymentmodule, cart, contact, default_view_ta
             shipcost = method.cost()
             shipping_tax = None
             taxed_shipping_price = None
-            if config_value('TAX','TAX_SHIPPING'):
+            if config_value_safe('TAX','TAX_SHIPPING', False):
                 shipping_tax = TaxClass.objects.get(title=config_value('TAX', 'TAX_CLASS'))
                 taxer = _get_taxprocessor(request)
                 total = shipcost + taxer.by_price(shipping_tax, shipcost)
@@ -110,6 +110,30 @@ class PaymentContactInfoForm(PaymentMethodForm, ContactInfoForm):
             signals.form_save.send(PaymentContactInfoForm, form=self)
             return contactid
 
+        def clean(self):
+            try:
+                paymentmethod = self.cleaned_data['paymentmethod']
+            except KeyError:
+                self._errors['paymentmethod'] = forms.util.ErrorList([_('This field is required')])
+                return self.cleaned_data
+            payment_module = config_get_group(paymentmethod)
+            try:
+                required_fields = payment_module.REQUIRED_BILLING_DATA.value
+            except AttributeError:
+                # This payment module has no requirements regarding billing data
+                return self.cleaned_data
+            msg = _('Selected payment method requires this field to be filled')
+            for fld in required_fields:
+                if not (self.cleaned_data.has_key(fld) and self.cleaned_data[fld]):
+                    self._errors[fld] = forms.util.ErrorList([msg])
+                elif fld == 'state':
+                    self.enforce_state = True
+                    try:
+                        self._check_state(self.cleaned_data['state'], self.cleaned_data['country'])
+                    except forms.ValidationError, e:
+                        self._errors[fld] = e.messages
+            return self.cleaned_data
+
 class SimplePayShipForm(forms.Form):
     shipping = forms.ChoiceField(widget=forms.RadioSelect(), required=False)
     discount = forms.CharField(max_length=30, required=False)
@@ -139,11 +163,16 @@ class SimplePayShipForm(forms.Form):
         if kwargs.has_key('default_view_tax'):
             default_view_tax = kwargs['default_view_tax']
         else:
-            default_view_tax = config_value('TAX', 'TAX_SHIPPING')
+            default_view_tax = config_value_safe('TAX', 'TAX_SHIPPING', False)
             
         shipping_choices, shipping_dict = _get_shipping_choices(request, paymentmodule, self.tempCart, self.tempContact, default_view_tax=default_view_tax)
+        if len(shipping_choices) == 1:
+            self.fields['shipping'].widget = forms.RadioSelect(attrs={'value' : shipping_choices[0][0]})
         self.fields['shipping'].choices = shipping_choices
         self.shipping_dict = shipping_dict
+        
+        if not config_value('PAYMENT', 'USE_DISCOUNTS'):
+            self.fields['discount'].widget = forms.HiddenInput()
         
         signals.payment_form_init.send(SimplePayShipForm, form=self)
 
@@ -155,6 +184,8 @@ class SimplePayShipForm(forms.Form):
 
     def clean_discount(self):
         """ Check if discount exists and is valid. """
+        if not config_value('PAYMENT', 'USE_DISCOUNTS'):
+            return ''
         data = self.cleaned_data['discount']
         if data:
             try:
@@ -165,11 +196,13 @@ class SimplePayShipForm(forms.Form):
             if not valid:
                 raise forms.ValidationError(msg)
             # TODO: validate that it can work with these products
-        return data        
+        return data
 
     def save(self, request, cart, contact, payment_module):
         self.order = get_or_create_order(request, cart, contact, self.cleaned_data)
-        self.orderpayment = create_pending_payment(self.order, payment_module)
+        processor_module = payment_module.MODULE.load_module('processor')
+        processor = processor_module.PaymentProcessor(payment_module)
+        self.orderpayment = processor.create_pending_payment(order=self.order)
         signals.form_save.send(SimplePayShipForm, form=self)
 
 
@@ -222,7 +255,7 @@ class CreditPayShipForm(SimplePayShipForm):
         if datetime.date.today() > datetime.date(year=year, month=month, day=max_day):
             raise forms.ValidationError(_('Your card has expired.'))
         return year
-    
+
     def clean_ccv(self):
         """ Validate a proper CCV is entered. Remember it can have a leading 0 so don't convert to int and return it"""
         try:
@@ -235,14 +268,16 @@ class CreditPayShipForm(SimplePayShipForm):
         """Save the order and the credit card information for this orderpayment"""
         super(CreditPayShipForm, self).save(request, cart, contact, payment_module)
         data = self.cleaned_data
-        cc = CreditCardDetail(orderpayment=self.orderpayment,
+        op = self.orderpayment.capture
+
+        cc = CreditCardDetail(orderpayment=op,
             expire_month=data['month_expires'],
             expire_year=data['year_expires'],
             credit_type=data['credit_type'])
-            
+
         cc.storeCC(data['credit_number'])
         cc.save()
-        
+
         # set ccv into cache
         cc.ccv = data['ccv']
         self.cc = cc

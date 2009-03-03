@@ -1,15 +1,15 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_store/contact/templates/contact
 svn://satchmoproject.com
 
 
 
-2008-12-05T07:35:39.004671Z
-1786
-bkroeze
+2009-02-22T15:04:40.397185Z
+1965
+chris
 
 
 svn:special svn:externals svn:needs-lock
@@ -32,11 +32,11 @@ file
 
 
 
-2009-02-22T02:40:25.703125Z
-201493a41bce4ffcbab3818906f6c5f6
-2008-12-05T07:35:39.004671Z
-1786
-bkroeze
+2009-03-02T23:56:55.564500Z
+bd60ef52ed6acba3a68b1c584a56116c
+2009-02-22T15:04:40.397185Z
+1965
+chris
 
 
 
@@ -58,7 +58,7 @@ bkroeze
 
 
 
-4619
+4622
 
 _addressblock.html
 file

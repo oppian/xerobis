@@ -1,14 +1,14 @@
 9
 
 dir
-1964
+1982
 svn://satchmoproject.com/satchmo/trunk/satchmo/apps/satchmo_ext/wishlist
 svn://satchmoproject.com
 
 
 
-2009-01-15T01:05:44.015120Z
-1902
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 has-props
 
@@ -103,10 +103,10 @@ file
 
 
 
-2009-02-22T02:41:09.031250Z
-f797fd3bbd8e9d2a9e6cfed88da7a422
-2008-12-06T02:03:43.597857Z
-1798
+2009-03-02T23:56:58.220750Z
+791da16d124a386499040dc94c81e03b
+2009-02-25T22:40:25.181086Z
+1973
 bkroeze
 
 
@@ -129,7 +129,7 @@ bkroeze
 
 
 
-6420
+6431
 
 __init__.py
 file
