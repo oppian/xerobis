@@ -4,6 +4,7 @@ from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
 from satchmo_utils.views import bad_or_missing
 from satchmo_store.shop.models import Order
+from satchmo_store.shop.models import Cart
 
 def success(request):
     """
@@ -13,6 +14,11 @@ def success(request):
         order = Order.objects.from_request(request)
     except Order.DoesNotExist:
         return bad_or_missing(request, _('Your order has already been processed.'))
+    
+    # empty cart if not already done so on confirm (like google checkout)
+    cart = Cart.objects.from_request(request, return_nullcart=True)
+    if cart:
+        cart.empty()
     
     # Added to track total sold for each product
     for item in order.orderitem_set.all():
