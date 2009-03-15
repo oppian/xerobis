@@ -1,21 +1,21 @@
 from django import http
 from django.shortcuts import render_to_response
-from django.template import RequestContext, Context
+from django.template import Context, RequestContext
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import never_cache
-from livesettings import config_get_group
-from satchmo_store.shop.models import Order
-from livesettings import config_value 
-from payment.views import payship
+from livesettings import config_get_group, config_value
 from payment.config import payment_live
+from payment.views import confirm, payship
+from satchmo_store.shop.models import Cart, Contact, Order
 from satchmo_utils.dynamic import lookup_url, lookup_template
-from satchmo_store.shop.models import Cart
+import auth
 import base64
 import hmac
 import logging
+import notifications
 import sha
-from payment.views import confirm
+import urllib
 
 # TODO: This module doesn't seem to actually record any payments.
 
@@ -79,7 +79,7 @@ def confirm_info(request):
         merchant_id = payment_module.MERCHANT_TEST_ID.value
         url_template = payment_module.POST_TEST_URL.value
         
-    post_url =  url_template % {'MERCHANT_ID' : merchant_id}
+    post_url = url_template % {'MERCHANT_ID' : merchant_id}
     default_view_tax = config_value('TAX', 'DEFAULT_VIEW_TAX')
     
     ctx = {
@@ -94,3 +94,54 @@ def confirm_info(request):
     return controller.response
 
 confirm_info = never_cache(confirm_info)
+
+
+
+def notification(request):
+    """
+    View to receive notifcations from google about order status
+    """
+    data = request.POST
+    log.debug(data)
+    
+    # check the given merchant id
+    log.debug("Google Checkout Notification")
+    response = auth.do_auth(request)
+    if response:
+        return response
+    
+    # ok its authed, get the type and serial
+    type = data['_type']
+    serial_number = data['serial-number'].strip()
+    
+    log.debug("type: %s" % type)
+    log.debug("serial-number: %s" % serial_number)
+    
+    # check type
+    if type == 'new-order-notification':
+        notifications.notifiy_neworder(request, data)
+    elif type == 'order-state-change-notification':
+        notifications.notify_statechanged(request, data)
+    elif type == 'charge-amount-notification':
+        notifications.notify_chargeamount(request, data)
+
+    ack = '<notification-acknowledgment xmlns="http://checkout.google.com/schema/2" serial-number="%s"/>' % serial_number 
+    response = http.HttpResponse(content=ack, content_type="text/xml; charset=UTF-8")
+    log.debug(response)
+    return response
+
+notification = never_cache(notification)
+
+def success(request):
+    """
+    The order has been succesfully processed.  This can be used to generate a receipt or some other confirmation
+    """
+    try:
+        order = Order.objects.from_request(request)
+    except Order.DoesNotExist:
+        return bad_or_missing(request, _('Your order has already been processed.'))
+        
+    del request.session['orderID']
+    context = RequestContext(request, {'order': order})
+    return render_to_response('shop/checkout/success.html', context)
+success = never_cache(success)
