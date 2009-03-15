@@ -49,8 +49,10 @@ SITE_NAME = "Xerobis"
 # Preferably use memcached, but file or DB is OK.  File is faster, I don't know why you'd want to use
 # db, personally.  See: http://www.djangoproject.com/documentation/cache/ for help setting up your
 # cache backend
-#CACHE_BACKEND = "file://C:/tmp/django_cache"
-CACHE_BACKEND = "memcached://127.0.0.1:11211/"
+
+# uses env var if set otherwise mem cache
+# for windows dev set CACHE_BACKEND env to "file://C:/tmp/django_cache"
+CACHE_BACKEND = os.environ.get('CACHE_BACKEND', 'memcached://127.0.0.1:11211/')
 	
 CACHE_TIMEOUT = 60*5
 
