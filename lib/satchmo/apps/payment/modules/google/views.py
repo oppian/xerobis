@@ -71,15 +71,8 @@ def confirm_info(request):
     live = payment_live(payment_module)
     gcart = GoogleCart(controller.order, payment_module, live)
     log.debug("CART:\n%s", gcart.cart_xml)
-
-    if live:
-        merchant_id = payment_module.MERCHANT_ID.value
-        url_template = payment_module.POST_URL.value
-    else:
-        merchant_id = payment_module.MERCHANT_TEST_ID.value
-        url_template = payment_module.POST_TEST_URL.value
         
-    post_url = url_template % {'MERCHANT_ID' : merchant_id}
+    post_url = auth.get_url()
     default_view_tax = config_value('TAX', 'DEFAULT_VIEW_TAX')
     
     ctx = {
@@ -92,7 +85,6 @@ def confirm_info(request):
     controller.extra_context = ctx
     controller.confirm()
     return controller.response
-
 confirm_info = never_cache(confirm_info)
 
 
@@ -125,11 +117,11 @@ def notification(request):
     elif type == 'charge-amount-notification':
         notifications.notify_chargeamount(request, data)
 
+    # return ack so google knows we handled the message
     ack = '<notification-acknowledgment xmlns="http://checkout.google.com/schema/2" serial-number="%s"/>' % serial_number 
     response = http.HttpResponse(content=ack, content_type="text/xml; charset=UTF-8")
     log.debug(response)
     return response
-
 notification = never_cache(notification)
 
 def success(request):

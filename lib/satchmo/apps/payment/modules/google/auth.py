@@ -25,6 +25,20 @@ def get_cred():
     
     return (merchant_id, merchant_key)
 
+def get_url():
+    """
+    Returns the urls needed
+    """
+    (merchant_id, merchant_key) = get_cred()
+    payment_module = config_get_group('PAYMENT_GOOGLE')
+    live = payment_live(payment_module)
+    if live:
+        url_template = payment_module.POST_URL.value
+    else:
+        url_template = payment_module.POST_TEST_URL.value
+    post_url = url_template % {'MERCHANT_ID' : merchant_id}
+    return post_url
+
 def do_auth(request):
     try:
         (merchant_id, merchant_key) = get_cred()
