@@ -8,8 +8,11 @@ DIRNAME = os.path.normcase(os.path.abspath(os.path.dirname(__file__)))
 DJANGO_PROJECT = 'satchmo'
 DJANGO_SETTINGS_MODULE = 'satchmo_store.settings'
 
-LOCAL_DEV = True
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
+if DEBUG:
+    LOCAL_DEV = True
+    DEBUG = True
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -18,13 +21,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 # The following variables should be configured in your local_settings.py file
-DATABASE_NAME = os.path.join(DIRNAME, 'sqlite.db')             # Or path to database file if using sqlite3.
+#DATABASE_NAME = os.path.join(DIRNAME, 'sqlite.db')             # Or path to database file if using sqlite3.
 #DATABASE_USER = ''             # Not used with sqlite3.
 #DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+#DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
+#DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+
+# DB
+if DEBUG:
+    DATABASE_ENGINE = 'sqlite3'
+    DATABASE_NAME = os.path.join(DIRNAME, 'sqlite.db')
+else:
+    DATABASE_ENGINE = 'mysql'
+    DATABASE_NAME = 'xerobis'
+    DATABASE_USER = 'xerobis'
+    DATABASE_PASSWORD = 'xerobis'
+    
 
 # Local time zone for this installation. All choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE

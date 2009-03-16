@@ -12,27 +12,9 @@ import os
 import logging
 import settings
 
-# This is useful, since satchmo is not the "current directory" like load_data expects.
-# SATCHMO_DIRNAME = ''
+DIRNAME = os.path.normcase(os.path.abspath(os.path.dirname(__file__)))
+DEBUG = os.environ.get('DEBUG', False)
 
-# Only set these if Satchmo is part of another Django project
-#SITE_NAME = ''
-#ROOT_URLCONF = ''
-#MEDIA_ROOT = os.path.join(DIRNAME, 'static/')
-#DJANGO_PROJECT = 'Your Main Project Name'
-#DJANGO_SETTINGS_MODULE = 'main-project.settings'
-#DATABASE_NAME = ''
-#DATABASE_PASSWORD = ''
-#DATABASE_USER = ''
-#SECRET_KEY = ''
-
-##### For Email ########
-# If this isn't set in your settings file, you can set these here
-#EMAIL_HOST = 'host here'
-#EMAIL_PORT = 587
-#EMAIL_HOST_USER = 'your user here'
-#EMAIL_HOST_PASSWORD = 'your password'
-#EMAIL_USE_TLS = True
 
 #### Satchmo unique variables ####
 
@@ -40,10 +22,6 @@ import settings
 SITE_DOMAIN = "xerobis.co.uk"
 SITE_NAME = "Xerobis"
 
-# These can override or add to the default URLs
-#from django.conf.urls.defaults import *
-#URLS = patterns('',
-#)
 
 # a cache backend is required.  Do not use locmem, it will not work properly at all in production
 # Preferably use memcached, but file or DB is OK.  File is faster, I don't know why you'd want to use
@@ -52,7 +30,10 @@ SITE_NAME = "Xerobis"
 
 # uses env var if set otherwise mem cache
 # for windows dev set CACHE_BACKEND env to "file://C:/tmp/django_cache"
-CACHE_BACKEND = os.environ.get('CACHE_BACKEND', 'memcached://127.0.0.1:11211/')
+if DEBUG:
+	CACHE_BACKEND = 'file://C:/tmp/django_cache'
+else: 
+	CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 	
 CACHE_TIMEOUT = 60*5
 
@@ -84,9 +65,11 @@ logging.getLogger('l10n').setLevel(logging.INFO)
 logging.info("Satchmo Started")
 
 # added as explained in http://gosatchmo.com/starting-a-new-store-real-world-project-layout
-DIRNAME = os.path.dirname(__file__)
+# uses satchmo templates by default unless custom one exists
 SATCHMO_DIRNAME = os.path.join(DIRNAME, 'lib/satchmo/apps/satchmo_store/shop')
 TEMPLATE_DIRS = (
 	os.path.normcase(os.path.join(DIRNAME, "templates")),
 	os.path.normcase(os.path.join(SATCHMO_DIRNAME, "templates")),
 )
+
+DEFAULT_CHARSET = 'utf-8'
